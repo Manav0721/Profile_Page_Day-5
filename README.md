@@ -4,8 +4,6 @@
 
 ![Badge](https://img.shields.io/badge/HTML-5-orange) 
 ![Badge](https://img.shields.io/badge/CSS-3-blue) 
-![Badge](https://img.shields.io/badge/License-MIT-green)
-![Badge](https://img.shields.io/badge/Status-Active-brightgreen)
 
 ---
 
