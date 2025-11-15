@@ -1,4 +1,4 @@
-// main.js - Interactive Portfolio JavaScript
+// main.js - Interactive Profile JavaScript
 
 // ===== Smooth Scrolling for Navigation Links =====
 document.querySelectorAll('.nav-item').forEach(anchor => {
@@ -47,6 +47,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     rootMargin: '0px 0px -50px 0px'
   };
   
+  //===== Card Fade-in Observer =====
   const cardObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -56,6 +57,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     });
   }, observerOptions);
   
+  // Apply initial styles and observe cards
   document.querySelectorAll('.card').forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(30px)';
@@ -66,6 +68,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
   // ===== Back to Top Button Visibility =====
   const backToTopBtn = document.querySelector('.to-top');
   
+  // Initial styles
   function toggleBackToTop() {
     if (window.pageYOffset > 300) {
       backToTopBtn.style.opacity = '1';
@@ -82,6 +85,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
   // ===== Skill Items Staggered Hover Effect =====
   const skillItems = document.querySelectorAll('.skills-list li');
   
+  // Apply staggered animation delay
   skillItems.forEach((skill, index) => {
     skill.addEventListener('mouseenter', function() {
       this.style.animationPlayState = 'paused';
@@ -95,10 +99,12 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
   // ===== Details/Summary Smooth Expansion =====
   const detailsElements = document.querySelectorAll('details');
   
+  // Apply smooth animation on toggle
   detailsElements.forEach(detail => {
     const summary = detail.querySelector('summary');
     const content = detail.querySelector('p');
     
+    // Initial styles
     detail.addEventListener('toggle', function() {
       if (this.open) {
         content.style.animation = 'fadeInUp 0.4s ease-out';
@@ -113,6 +119,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     subtitle.textContent = '';
     let charIndex = 0;
     
+    // Typing effect function
     function typeWriter() {
       if (charIndex < originalText.length) {
         subtitle.textContent += originalText.charAt(charIndex);
@@ -129,9 +136,11 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
   const header = document.querySelector('.top-header');
   let lastScrollY = window.pageYOffset;
   
+  // Header scroll handler
   function handleHeaderScroll() {
     const currentScrollY = window.pageYOffset;
     
+    // Shrink header on scroll down
     if (currentScrollY > 100) {
       header.style.padding = '0.75rem 2rem';
       header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
@@ -143,14 +152,17 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     lastScrollY = currentScrollY;
   }
   
+  // Attach scroll event listener
   window.addEventListener('scroll', handleHeaderScroll);
   
   // ===== Parallax Effect for Background Shapes =====
   const shapes = document.querySelectorAll('.shape');
   
+  // Parallax scroll handler
   function parallaxShapes() {
     const scrolled = window.pageYOffset;
     
+    // Apply parallax effect
     shapes.forEach((shape, index) => {
       const speed = 0.05 + (index * 0.02);
       const yPos = -(scrolled * speed);
@@ -158,16 +170,19 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     });
   }
   
+  // Attach scroll event listener
   window.addEventListener('scroll', parallaxShapes);
   
   // ===== Copy Email on Click =====
   const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
   
+  // Attach click event to email links
   emailLinks.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const email = this.getAttribute('href').replace('mailto:', '');
       
+      // Copy email to clipboard
       navigator.clipboard.writeText(email).then(() => {
         // Show temporary notification
         showNotification('Email copied to clipboard!');
@@ -199,8 +214,10 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
       font-weight: 500;
     `;
     
+    // Append notification to body
     document.body.appendChild(notification);
     
+    // Auto-remove notification after 2.5 seconds
     setTimeout(() => {
       notification.style.animation = 'slideOutRight 0.3s ease-out';
       setTimeout(() => {
@@ -234,11 +251,13 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
       }
     }
   `;
+  // Append styles to head
   document.head.appendChild(notificationStyles);
   
   // ===== Project Cards Click Analytics =====
   const projectItems = document.querySelectorAll('.project-item');
   
+  // Attach click event to log project opens
   projectItems.forEach((project, index) => {
     project.addEventListener('toggle', function() {
       if (this.open) {
@@ -271,6 +290,7 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
     document.body.style.opacity = '0';
     document.body.style.transition = 'opacity 0.5s ease';
     
+    // Fade in the body after load
     setTimeout(() => {
       document.body.style.opacity = '1';
     }, 100);
@@ -279,21 +299,25 @@ document.querySelectorAll('.nav-item').forEach(anchor => {
   // ===== Mouse Follow Effect on Cards =====
   const cards = document.querySelectorAll('.card');
   
+  // Attach mousemove and mouseleave events for 3D effect
   cards.forEach(card => {
     card.addEventListener('mousemove', function(e) {
       const rect = this.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       
+      // Calculate center positions
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       
       const rotateX = (y - centerY) / 20;
       const rotateY = (centerX - x) / 20;
       
+      // Apply transform
       this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
     });
     
+    // Reset transform on mouse leave
     card.addEventListener('mouseleave', function() {
       this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
     });

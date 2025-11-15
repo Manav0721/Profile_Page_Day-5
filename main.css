@@ -793,10 +793,13 @@ summary:focus-visible {
     gap: 1rem;
     padding: 1rem 1.5rem;
   }
+
+/*==== Sidebar Adjustment ===== */  
   .sidebar {
     width: 200px;
   }
 
+  /*==== Card Padding Adjustment ===== */
   .card {
     padding: 1.5rem;
   }
@@ -809,16 +812,19 @@ summary:focus-visible {
     gap: 1rem;
   }
 
+  /*==== Sidebar Full Width ===== */
   .sidebar {
     width: 100%;
   }
 
+  /*==== Navigation Menu Grid Layout ===== */
   .nav-menu {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 0.5rem;
   }
 
+  /*==== Navigation Items Centered ===== */
   .nav-item {
     justify-content: center;
     flex-direction: column;
@@ -826,6 +832,7 @@ summary:focus-visible {
     padding: 0.75rem;
   }
 
+  /*==== Hide Navigation Text ===== */
   .nav-text {
     display: none;
   }
@@ -837,46 +844,56 @@ summary:focus-visible {
     padding: 1rem;
   }
 
+  /*==== Header Wrapper Column Layout ===== */
   .header-wrapper {
     flex-direction: column;
     gap: 1rem;
   }
 
+  /*==== Header Left & Right Full Width ===== */
   .header-left,
   .header-right {
     flex-direction: column;
     width: 100%;
   }
 
+  /*==== Center Header Contact ===== */
   .header-contact {
     text-align: center;
   }
 
+  /*==== Layout Wrapper Padding Adjustment ===== */
   .layout-wrapper {
     padding: 1rem;
   }
 
+  /*==== Navigation Menu Two Columns ===== */
   .nav-menu {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  /*==== Card Padding & Font Size Adjustment ===== */
   .card {
     padding: 1.25rem;
   }
 
+  /*==== Card Title Font Size Adjustment ===== */
   .card h3 {
     font-size: 1.2rem;
   }
 
+  /*==== Skills List Adjustments ===== */
   .skills-list {
     gap: 0.5rem;
   }
 
+  /*==== Skill Item Font Size Adjustment ===== */
   .skills-list li {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
   }
 
+  /*==== Back to Top Button Size Adjustment ===== */
   .to-top {
     right: 1rem;
     bottom: 1rem;
@@ -884,6 +901,7 @@ summary:focus-visible {
     height: 2.75rem;
   }
 
+  /*==== Floating Shapes Size Adjustment ===== */
   .shape {
     width: 150px !important;
     height: 150px !important;
@@ -896,6 +914,7 @@ summary:focus-visible {
     background: white;
   }
 
+  /* Hide Decorative Elements */
   body::before,
   body::after,
   .animated-shapes,
@@ -903,18 +922,22 @@ summary:focus-visible {
     display: none;
   }
 
+  /* Simplify Header for Print */
   .top-header {
     border-bottom: 1px solid #ddd;
   }
 
+  /* Layout Adjustments for Print */
   .layout-wrapper {
     flex-direction: column;
   }
 
+  /* Full Width Sidebar for Print */
   .sidebar {
     width: 100%;
   }
 
+  /* Simplify Cards for Print */
   .card {
     box-shadow: none;
     background: white;
@@ -922,6 +945,7 @@ summary:focus-visible {
     break-inside: avoid;
   }
 
+  /* Text Color for Print */
   a {
     color: inherit;
   }
