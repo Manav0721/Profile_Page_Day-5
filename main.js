@@ -282,28 +282,37 @@ window.addEventListener('load', function() {
   }, 100);
 });
 
-// ===== Mouse Follow Effect on Cards =====
+// ===== Cursor-Reactive Floating Effect on Cards =====
 const cards = document.querySelectorAll('.card');
 
 cards.forEach(card => {
   card.addEventListener('mousemove', function(e) {
     const rect = this.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const cardCenterX = rect.left + rect.width / 2;
+    const cardCenterY = rect.top + rect.height / 2;
 
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
+    // Get cursor position
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
 
-    const rotateX = (y - centerY) / 20;
-    const rotateY = (centerX - x) / 20;
+    // Calculate distance from card center
+    const deltaX = mouseX - cardCenterX;
+    const deltaY = mouseY - cardCenterY;
 
-    this.style.transformOrigin = 'center';
-    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px) scale(1.02)`;
+    // Move card AWAY from cursor (repelling effect)
+    // Adjust the divisor (15) to control sensitivity
+    const moveX = -(deltaX / 15);
+    const moveY = -(deltaY / 15);
+
+    // Apply uniform floating transform (no rotation/tilt)
+    this.style.transform = `translateX(${moveX}px) translateY(${moveY}px) translateZ(0) scale(1.02)`;
+    this.style.transition = 'transform 0.1s ease-out';
   });
 
+  // Reset position smoothly when cursor leaves
   card.addEventListener('mouseleave', function() {
-    this.style.transformOrigin = 'center';
-    this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+    this.style.transform = 'translateX(0) translateY(0) translateZ(0) scale(1)';
+    this.style.transition = 'transform 0.4s ease';
   });
 });
 
